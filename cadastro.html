@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Recanto Animal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f6f7f8; color: #333; }
+        header { background-color: #2e8b57; color: white; text-align: center; padding: 20px 0; }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 25px; margin-top: 15px; }
+        nav a { text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
+        nav a:hover { color: #ffeb3b; }
+        main { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #2e8b57; margin-bottom: 20px; }
+        form { display: flex; flex-direction: column; gap: 15px; }
+        fieldset { border: 2px solid #2e8b57; border-radius: 10px; padding: 15px; background-color: #f0fff0; }
+        legend { font-weight: bold; color: #2e8b57; padding: 0 10px; }
+        label { font-weight: 600; margin-top: 10px; display: block; }
+        input, select, button { padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 6px; margin-top: 5px; }
+        input:focus { outline: 2px solid #2e8b57; }
+        button { background-color: #2e8b57; color: white; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
+        button:hover { background-color: #1d5e3c; }
+        footer { background-color: #2e8b57; color: white; text-align: center; padding: 15px; margin-top: 40px; border-top: 4px solid #1d5e3c; }
+        @media (max-width: 600px) { nav ul { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cadastro de Voluntários e Doadores</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form action="#" method="post">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
+
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" pattern="\(\d{2}\)\s\d{5}-\d{4}" placeholder="(11) 99999-9999" required>
+
+                <label for="nascimento">Data de Nascimento:</label>
+                <input type="date" id="nascimento" name="nascimento" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Endereço</legend>
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required>
+
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" pattern="\d{5}-\d{3}" placeholder="00000-000" required>
+
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required>
+
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" maxlength="2" placeholder="SP" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Tipo de Participação</legend>
+                <label><input type="radio" name="tipo" value="voluntario" required> Voluntário</label>
+                <label><input type="radio" name="tipo" value="doador"> Doador</label>
+            </fieldset>
+
+            <button type="submit">Enviar Cadastro</button>
+            <button type="reset">Limpar</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ONG Recanto Animal</p>
+    </footer>
+</body>
+</html>

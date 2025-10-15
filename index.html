@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recanto Animal - Início</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f6f7f8; color: #333; }
+        header { background-color: #2e8b57; color: white; text-align: center; padding: 20px 0; }
+        header img { width: 120px; }
+        header h1 { margin-top: 10px; font-size: 2em; }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 25px; margin-top: 15px; }
+        nav a { text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
+        nav a:hover { color: #ffeb3b; }
+        main { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        section { margin-bottom: 30px; }
+        section img { display: block; margin: 15px auto; border-radius: 10px; width: 80%; max-width: 500px; }
+        h2 { color: #2e8b57; border-left: 5px solid #2e8b57; padding-left: 10px; margin-bottom: 10px; }
+        p { text-align: justify; margin-top: 10px; }
+        footer { background-color: #2e8b57; color: white; text-align: center; padding: 15px; margin-top: 40px; border-top: 4px solid #1d5e3c; }
+        @media (max-width: 600px) { nav ul { flex-direction: column; } section img { width: 100%; } }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="imagens/logo.png" alt="Logo Recanto Animal">
+        <h1>ONG Recanto Animal</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Quem Somos</h2>
+            <p>A <strong>Recanto Animal</strong> é uma ONG dedicada ao resgate, cuidado e adoção de animais em situação de abandono.</p>
+            <img src="imagens/animais resgatados.png" alt="Animais resgatados pela ONG">
+        </section>
+
+        <section>
+            <h2>Missão</h2>
+            <p>Promover o bem-estar animal por meio de ações de resgate, castração e conscientização da comunidade.</p>
+        </section>
+
+        <section>
+            <h2>Contato</h2>
+            <address>
+                <p><strong>E-mail:</strong> contato@recantoanimal.org</p>
+                <p><strong>Telefone:</strong> (11) 99999-9999</p>
+                <p><strong>Endereço:</strong> Rua dos Animais, 123 - São Paulo/SP</p>
+            </address>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ONG Recanto Animal - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
