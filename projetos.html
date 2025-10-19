@@ -4,57 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projetos Sociais - Recanto Animal</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f6f7f8; color: #333; }
-        header { background-color: #2e8b57; color: white; text-align: center; padding: 20px 0; }
-        nav ul { list-style: none; display: flex; justify-content: center; gap: 25px; margin-top: 15px; }
-        nav a { text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
-        nav a:hover { color: #ffeb3b; }
-        main { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        section { margin-bottom: 30px; }
-        section img { display: block; margin: 15px auto; border-radius: 10px; width: 80%; max-width: 500px; }
-        h1, h2 { color: #2e8b57; }
-        h2 { border-left: 5px solid #2e8b57; padding-left: 10px; margin-bottom: 10px; }
-        p { text-align: justify; margin-top: 10px; }
-        footer { background-color: #2e8b57; color: white; text-align: center; padding: 15px; margin-top: 40px; border-top: 4px solid #1d5e3c; }
-        @media (max-width: 600px) { nav ul { flex-direction: column; } section img { width: 100%; } }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Projetos Sociais</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+    
+    <link rel="stylesheet" href="css/style.css"> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    </head>
+
+<body class="main-layout">
+    
+    <header class="site-header">
+        <div class="logo">
+            <h1>Projetos Sociais</h1>
+        </div>
+
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav">☰</button>
+
+        <nav id="main-nav">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Adoção ▼</a>
+                    <ul class="submenu">
+                        <li><a href="#">Cães</a></li>
+                        <li><a href="#">Gatos</a></li>
+                        <li><a href="#">Processo</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item"><a href="projetos.html" class="nav-link">Projetos</a></li>
+                <li class="nav-item"><a href="cadastro.html" class="nav-link">Voluntariado</a></li>
+                <li class="nav-item">
+                    <a href="#doar" class="btn btn-primary">DOAR</a>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h2>Programa de Adoção</h2>
-            <img src="imagens/doacao1.png" alt="Cães e gatos disponíveis para adoção">
-            <p>Nosso programa conecta animais resgatados a famílias amorosas. Participe e adote um amigo!</p>
-        </section>
+    <main class="site-main">
+        
+        <div class="grid-container">
 
-        <section>
-            <h2>Voluntariado</h2>
-            <img src="imagens/voluntarios4.png" alt="Voluntários cuidando dos animais">
-            <p>Venha fazer parte da nossa equipe de voluntários! Seu tempo pode transformar vidas.</p>
-        </section>
+            <section class="col-span-12" style="background: var(--color-neutral-000); padding: var(--spacing-l); border-radius: var(--border-radius-m); box-shadow: var(--shadow-base);">
+                <h2>Programa de Adoção</h2>
+                
+                <div class="alert alert-success">
+                    🐾 Ajude-nos a encontrar lares: 15 animais foram adotados este mês!
+                </div>
+                
+                <img src="imagens/doacao1.png" alt="Cães e gatos disponíveis para adoção" style="max-width: 100%; height: auto; border-radius: var(--border-radius-m); margin: var(--spacing-s) auto;">
+                
+                <p>Nosso programa conecta animais resgatados a famílias amorosas. Participe e adote um amigo! Garantimos acompanhamento veterinário inicial e castração.</p>
+                
+                <a href="index.html" class="btn btn-secondary" style="margin-top: var(--spacing-s);">Ver Animais para Adoção</a>
+            </section>
 
-        <section>
-            <h2>Como Doar</h2>
-            <p>Você pode contribuir com ração, medicamentos, ou doações financeiras.</p>
-            <p><strong>Pix:</strong> 123.456.789-00 (CNPJ)</p>
-        </section>
+            <section class="col-span-6" style="background: var(--color-neutral-000); padding: var(--spacing-l); border-radius: var(--border-radius-m); box-shadow: var(--shadow-base);">
+                <h2>Voluntariado</h2>
+                <p>Venha fazer parte da nossa equipe! Seu tempo pode transformar vidas. Temos vagas para passeadores, cuidadores e suporte em eventos.</p>
+                
+                <a href="cadastro.html" class="btn btn-primary" style="margin-top: var(--spacing-s);">Inscreva-se Agora</a>
+                
+                <p style="margin-top: var(--spacing-s);">Vagas disponíveis: <span class="badge badge-urgent">URGENTE</span></p>
+            </section>
+
+            <section id="doar" class="col-span-6" style="background: var(--color-neutral-000); padding: var(--spacing-l); border-radius: var(--border-radius-m); box-shadow: var(--shadow-base);">
+                <h2>Como Doar</h2>
+                <p>Você pode contribuir com ração, medicamentos, ou doações financeiras para custear tratamentos. Cada centavo ajuda a salvar uma vida!</p>
+                
+                <p style="margin-top: var(--spacing-m);"><strong>Doação por Pix:</strong></p>
+                <p><strong>Chave:</strong> 123.456.789-00 (CNPJ)</p>
+                
+                <button class="btn btn-secondary" style="margin-top: var(--spacing-s);">Copiar Chave Pix</button>
+            </section>
+            
+        </div>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <p>&copy; 2025 ONG Recanto Animal</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+
+            // Lógica do Menu Hambúrguer
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('is-open');
+                const isExpanded = mainNav.classList.contains('is-open');
+                menuToggle.setAttribute('aria-expanded', isExpanded);
+                menuToggle.textContent = isExpanded ? '✕' : '☰';
+            });
+        });
+    </script>
 </body>
 </html>

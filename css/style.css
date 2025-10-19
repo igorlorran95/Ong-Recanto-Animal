@@ -1,0 +1,441 @@
+/* ==============================================
+   🌿 1. SISTEMA DE DESIGN (Design System - Variáveis CSS)
+   ATENDE: Variáveis CSS, 8 Cores, 5 Fontes, Espaçamento Modular
+   ============================================== */
+:root {
+    /* 1.1. Cores (Mínimo de 8) */
+    --color-primary-500: #2e7d32;     /* Verde Principal (Confiança, Natureza) */
+    --color-primary-700: #1b5e20;     /* Verde Escuro (Fundo Header) */
+    --color-secondary-500: #FF6700;   /* Laranja Principal (Ação, Urgência) */
+    --color-secondary-300: #FF9933;   /* Laranja Claro */
+    --color-neutral-900: #333333;     /* Texto Principal */
+    --color-neutral-500: #888888;     /* Texto Secundário */
+    --color-neutral-100: #f9f9f9;     /* Fundo Geral Claro */
+    --color-neutral-000: #FFFFFF;     /* Branco */
+
+    /* Cores de Feedback */
+    --color-success: #4CAF50;         /* Verde Sucesso */
+    --color-error: #f44336;           /* Vermelho Erro */
+
+    /* 1.2. Tipografia (Mínimo 5 Tamanhos) */
+    --font-family-primary: 'Poppins', sans-serif;
+    --font-family-secondary: 'Roboto', sans-serif;
+
+    --font-size-xxl: 2.5rem;   /* H1 (Mobile) */
+    --font-size-xl: 1.75rem;   /* H2 */
+    --font-size-l: 1.25rem;    /* H3/Componentes de Destaque */
+    --font-size-m: 1rem;       /* Corpo Padrão */
+    --font-size-s: 0.875rem;   /* Auxiliar/Badges */
+
+    /* 1.3. Espaçamento Modular (Mínimo 6 valores) */
+    --spacing-xs: 8px;
+    --spacing-s: 16px;
+    --spacing-m: 24px;
+    --spacing-l: 32px;
+    --spacing-xl: 48px;
+    --spacing-xxl: 64px;
+    
+    /* Outras Variáveis */
+    --border-radius-m: 8px;
+    --transition-speed: 0.3s;
+    --shadow-base: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ----------------------------------------------
+   2. Configurações Globais e Tipografia
+   ---------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-m);
+    color: var(--color-neutral-900);
+    background-color: var(--color-neutral-100);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-family-primary);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-s);
+    color: var(--color-primary-700);
+}
+
+h1 { font-size: var(--font-size-xxl); }
+h2 { font-size: var(--font-size-xl); }
+h3 { font-size: var(--font-size-l); }
+p { margin-bottom: var(--spacing-s); }
+
+/* ==============================================
+   🧱 3. LEIAUTE PRINCIPAL (CSS Grid)
+   ATENDE: Layout principal usando CSS grid
+   ============================================== */
+.main-layout {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main-content"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+.site-header {
+    grid-area: header;
+    background-color: var(--color-primary-700);
+    color: var(--color-neutral-000);
+    padding: var(--spacing-s) var(--spacing-m);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-main {
+    grid-area: main-content;
+    padding: var(--spacing-l) 0;
+}
+
+.site-footer {
+    grid-area: footer;
+    background-color: var(--color-primary-700);
+    color: var(--color-neutral-100);
+    text-align: center;
+    padding: var(--spacing-m);
+}
+
+/* 4. Sistema de Grid Customizado (12 Colunas) */
+.grid-container {
+    display: grid;
+    gap: var(--spacing-m);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-s);
+    /* Padrão Mobile First: 1 Coluna */
+    grid-template-columns: repeat(1, 1fr);
+}
+
+/* Classes para Colunas (Uso no HTML) */
+.col-span-12 { grid-column: span 12; }
+.col-span-8 { grid-column: span 8; }
+.col-span-4 { grid-column: span 4; }
+.col-span-6 { grid-column: span 6; }
+
+/* ==============================================
+   🧭 5. NAVEGAÇÃO (Flexbox, Dropdown e Hambúrguer)
+   ============================================== */
+
+/* --- AJUSTE DA LOGO (para garantir a visibilidade) --- */
+.logo {
+    display: flex; 
+    align-items: center;
+    gap: var(--spacing-s); 
+}
+
+.logo img {
+    /* AUMENTA O TAMANHO DA LOGO */
+    height: 60px; /* Tamanho visível em desktop e mobile */
+    width: auto; 
+    border-radius: 50%; /* Se a logo for circular, use 50% */
+    object-fit: contain;
+}
+
+.site-header .logo h1 {
+    font-size: var(--font-size-l);
+    color: var(--color-neutral-000); 
+    margin: 0;
+}
+/* ---------------------------------------------------- */
+
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-s);
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-neutral-000);
+    padding: var(--spacing-xs) var(--spacing-s);
+    transition: background-color var(--transition-speed);
+    display: block;
+    border-radius: var(--border-radius-m);
+}
+
+.nav-link:hover {
+    background-color: var(--color-primary-500);
+}
+
+/* Submenu Dropdown */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    background-color: var(--color-neutral-000);
+    border: 1px solid var(--color-neutral-100);
+    border-radius: var(--border-radius-m);
+    min-width: 150px;
+    padding: var(--spacing-xs) 0;
+    z-index: 10;
+    box-shadow: var(--shadow-base);
+}
+
+.nav-item:hover > .submenu,
+.nav-item:focus-within > .submenu {
+    display: block;
+}
+
+.submenu li a {
+    color: var(--color-neutral-900);
+    padding: var(--spacing-xs) var(--spacing-s);
+    display: block;
+}
+
+.submenu li a:hover {
+    background-color: var(--color-neutral-100);
+}
+
+/* Menu Hambúrguer (Oculto em desktop) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+    color: var(--color-neutral-000);
+}
+
+/* ==============================================
+   📦 6. COMPONENTES DE INTERFACE
+   ============================================== */
+
+/* Cards Responsivos (Flexbox) */
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-m);
+    justify-content: center;
+}
+
+.card {
+    flex: 1 1 300px; /* Cresce, encolhe, base de 300px */
+    background-color: var(--color-neutral-000);
+    border-radius: var(--border-radius-m);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform var(--transition-speed);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: var(--spacing-m);
+}
+
+/* Botões com Estados Visuais */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-s);
+    font-size: var(--font-size-m);
+    font-weight: 700;
+    border-radius: var(--border-radius-m);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all var(--transition-speed);
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-primary-500);
+    color: var(--color-neutral-000);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: var(--color-primary-700);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary-500);
+    color: var(--color-neutral-000);
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+    background-color: var(--color-secondary-300);
+}
+
+.btn:disabled {
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-500);
+    cursor: not-allowed;
+    border-color: var(--color-neutral-500);
+}
+
+/* Formulários Estilizados com Validação Visual */
+.form-group {
+    margin-bottom: var(--spacing-s);
+}
+
+.form-group input:not([type="checkbox"]), .form-group textarea {
+    padding: var(--spacing-xs);
+    border: 1px solid var(--color-neutral-500);
+    border-radius: var(--border-radius-m);
+    font-size: var(--font-size-m);
+    width: 100%;
+    transition: border-color var(--transition-speed);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--color-primary-500);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+}
+
+/* Validação Visual (ATENDE REQUISITO) */
+.form-group input:invalid:not(:focus):not(:placeholder-shown),
+.form-group textarea:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2);
+}
+
+/* Componentes de Feedback (Alerts) */
+.alert {
+    padding: var(--spacing-s);
+    margin: var(--spacing-s) 0;
+    border-radius: var(--border-radius-m);
+    font-weight: 500;
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    background-color: #E6F7E8;
+    border-color: var(--color-success);
+    color: var(--color-success);
+}
+
+.alert-error {
+    background-color: #FEEBEB;
+    border-color: var(--color-error);
+    color: var(--color-error);
+}
+
+/* Badges e Tags */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 100px;
+    font-size: var(--font-size-s);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-urgent {
+    background-color: var(--color-secondary-500);
+    color: var(--color-neutral-000);
+}
+
+/* ==============================================
+   📱 7. BREAKPOINTS RESPONSIVOS (Mínimo 5)
+   ATENDE: 5 Breakpoints
+   ============================================== */
+
+/* BP 1: Tablets Pequenos (600px) */
+@media (min-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+/* BP 2: Tablets Médios (768px) */
+@media (min-width: 768px) {
+    .menu-toggle { display: none; }
+    .nav-menu { display: flex !important; }
+
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+}
+
+/* BP 3: Desktop Pequeno (992px) */
+@media (min-width: 992px) {
+    :root {
+        --font-size-xxl: 3rem; /* Aumenta o H1 */
+    }
+    .grid-container {
+        grid-template-columns: repeat(6, 1fr); 
+    }
+}
+
+/* BP 4: Desktop Médio (1200px) */
+@media (min-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(12, 1fr); /* ATIVA o GRID DE 12 COLUNAS */
+    }
+}
+
+/* BP 5: Desktop Grande (1440px) */
+@media (min-width: 1440px) {
+    .grid-container {
+        max-width: 1400px;
+    }
+}
+
+/* Layout Mobile (Força o Menu Hambúrguer) */
+@media (max-width: 767px) {
+    .site-header {
+        position: relative;
+    }
+    nav {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--color-primary-700);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: none; /* Oculta o menu por padrão */
+        z-index: 99;
+    }
+    .nav-menu {
+        flex-direction: column;
+        padding: var(--spacing-s) var(--spacing-m);
+        gap: 0;
+    }
+    .menu-toggle {
+        display: block; /* Mostra o ícone */
+    }
+    nav.is-open {
+        display: block;
+    }
+    /* Simplifica o dropdown no mobile */
+    .submenu {
+        position: static;
+        background-color: var(--color-primary-500);
+        border: none;
+        box-shadow: none;
+    }
+    .submenu li a {
+        color: var(--color-neutral-000);
+        padding-left: var(--spacing-l);
+    }
+}
