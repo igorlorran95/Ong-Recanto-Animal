@@ -133,13 +133,15 @@
         <p>&copy; 2025 ONG Recanto Animal - Todos os direitos reservados.</p>
     </footer>
 
+    <script src="js/validation.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const form = document.getElementById("form-cadastro");
             const msg = document.getElementById("msg-sucesso");
             const menuToggle = document.getElementById('menu-toggle');
             const mainNav = document.getElementById('main-nav');
-            const btnEnviar = document.getElementById('btn-enviar'); // Captura o botão
+            const btnEnviar = document.getElementById('btn-enviar');
 
             // Lógica do Menu Hambúrguer
             menuToggle.addEventListener('click', function() {
@@ -149,23 +151,30 @@
                 menuToggle.textContent = isExpanded ? '✕' : '☰';
             });
 
-            // Lógica do Formulário com simulação de estado disabled
+            // Lógica de Submissão FINAL
+            // Esta função só roda se o validation.js e o HTML5 a liberarem
             form.addEventListener("submit", (e) => {
-                e.preventDefault(); 
                 
-                // 1. SIMULAÇÃO: Desabilita o botão para demonstrar o estado 'disabled'
+                // Verifica se o formulário falhou na validação nativa do HTML5
+                if (!form.checkValidity()) {
+                    return;
+                }
+                
+                e.preventDefault(); // Impede o envio padrão
+
+                // SIMULAÇÃO DE PROCESSAMENTO: Demonstra o estado 'disabled'
                 btnEnviar.disabled = true;
                 btnEnviar.textContent = 'Enviando...';
 
-                // 2. Exibe a mensagem e limpa o formulário
+                // Exibe a mensagem de sucesso
                 msg.style.display = "block"; 
-                form.reset(); 
-
-                // 3. Reabilita o botão e esconde a mensagem após 3 segundos
+                
+                // Limpa o formulário APENAS após a simulação de sucesso
                 setTimeout(() => {
                     msg.style.display = "none";
                     btnEnviar.disabled = false;
                     btnEnviar.textContent = 'Enviar Cadastro';
+                    form.reset(); 
                 }, 3000);
             });
         });

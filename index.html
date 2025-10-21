@@ -50,40 +50,14 @@
             <section class="col-span-12">
                 <h2>Quem Somos</h2>
                 <p>A <strong>Recanto Animal</strong> é uma ONG dedicada ao resgate, cuidado e adoção de animais em situação de abandono. Nossa missão é promover o bem-estar animal por meio de ações de resgate, castração e conscientização da comunidade.</p>
-                <img src="imagens/animais resgatados.png" alt="Animais resgatados pela ONG" style="width: 100%; max-width: 600px; display: block; margin: var(--spacing-m) auto;">
+                <img src="imagens/animais_resgatados.png" alt="Animais resgatados pela ONG" style="width: 100%; max-width: 600px; display: block; margin: var(--spacing-m) auto;">
             </section>
             
             <section class="col-span-12">
                 <h2>Nossos Amigos para Adoção</h2>
                 
                 <div class="card-grid">
-                    <article class="card">
-                        <div class="card-image"><img src="imagens/REX.png" alt="Rex, cão para adoção"></div>
-                        <div class="card-content">
-                            <h3>Rex <span class="badge badge-urgent">Urgente</span></h3>
-                            <p>Cão, 3 anos, porte médio. Calmo e brincalhão.</p>
-                            <a href="#" class="btn btn-secondary">Adote o Rex</a>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-image"><img src="imagens/MIAU.png" alt="Miau, gata para adoção"></div>
-                        <div class="card-content">
-                            <h3>Miau</h3>
-                            <p>Gata, 1 ano, dócil e adora um carinho.</p>
-                            <a href="#" class="btn btn-primary">Adote a Miau</a>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-image"><img src="imagens/FLORA.png" alt="Flora, cão para adoção"></div>
-                        <div class="card-content">
-                            <h3>Flora</h3>
-                            <p>Cão, 5 anos, porte pequeno. Perfeita para apartamentos.</p>
-                            <a href="#" class="btn btn-primary">Adote Flora</a>
-                        </div>
-                    </article>
-                </div>
+                    </div>
             </section>
 
             <section id="contato" class="col-span-12" style="background: var(--color-neutral-000); padding: var(--spacing-l); border-radius: var(--border-radius-m); box-shadow: var(--shadow-base);">
@@ -122,13 +96,17 @@
         <p>&copy; 2025 ONG Recanto Animal - Todos os direitos reservados.</p>
     </footer>
 
+    <script src="js/spa.js"></script>
+    
+    <script src="js/validation.js"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('form-contato');
             const msg = document.getElementById('mensagem-sucesso');
             const menuToggle = document.getElementById('menu-toggle');
             const mainNav = document.getElementById('main-nav');
-            const btnEnviar = document.getElementById('btn-enviar'); // Captura o botão
+            const btnEnviar = document.getElementById('btn-enviar');
 
             // Lógica do Menu Hambúrguer
             menuToggle.addEventListener('click', function() {
@@ -138,23 +116,23 @@
                 menuToggle.textContent = isExpanded ? '✕' : '☰';
             });
 
-            // Lógica do Formulário com simulação de estado disabled
+            // Lógica do Formulário de Contato
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // 1. SIMULAÇÃO: Desabilita o botão para mostrar o estado 'disabled'
+                // Demonstração do estado 'disabled'
                 btnEnviar.disabled = true;
                 btnEnviar.textContent = 'Enviando...';
 
-                // 2. Exibe o Alert de Sucesso
+                // Exibe o Alert de Sucesso
                 msg.style.display = 'block';
-                form.reset();
 
-                // 3. Reabilita o botão e esconde a mensagem após 3 segundos
+                // Reabilita o botão, esconde a mensagem e limpa o form após 3 segundos
                 setTimeout(() => {
                     msg.style.display = 'none';
                     btnEnviar.disabled = false;
                     btnEnviar.textContent = 'Enviar';
+                    form.reset();
                 }, 3000); 
             });
         });
